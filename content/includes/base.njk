@@ -26,6 +26,45 @@
   <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 </head>
 <body>
+  <nav class="site-nav">
+    <div class="site-nav-left">
+      <a href="/" class="site-nav-home">{{ metadata.title }}</a>
+    </div>
+    {% if isChapter -%}
+    <div class="site-nav-center">
+      <a href="/" class="site-nav-contents">Contents</a>
+    </div>
+    {% endif -%}
+    <div class="site-nav-right">
+      <a href="/about/" class="site-nav-about">About</a>
+    </div>
+  </nav>
+  
   {{ content | safe }}
+  
+  {% if isChapter and collections.chapters and collections.chapters.length > 1 -%}
+  <nav class="chapter-nav">
+    {% set chapterIndex = null -%}
+    {% for chapter in collections.chapters -%}
+      {% if chapter.url == page.url -%}
+        {% set chapterIndex = loop.index0 -%}
+      {% endif -%}
+    {% endfor -%}
+    
+    <div class="chapter-nav-left">
+      {% if chapterIndex > 0 -%}
+        {% set prevChapter = collections.chapters[chapterIndex - 1] -%}
+        <a href="{{ prevChapter.url }}">&larr; {{ prevChapter.data.title }}</a>
+      {% endif -%}
+    </div>
+    
+    <div class="chapter-nav-right">
+      {% if chapterIndex < collections.chapters.length - 1 -%}
+        {% set nextChapter = collections.chapters[chapterIndex + 1] -%}
+        <a href="{{ nextChapter.url }}">{{ nextChapter.data.title }} &rarr;</a>
+      {% endif -%}
+    </div>
+  </nav>
+  {% endif -%}
 </body>
 </html>

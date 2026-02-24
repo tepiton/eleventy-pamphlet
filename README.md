@@ -30,26 +30,107 @@ An Eleventy starter for literary and chaptered works. Built for sites like [twoh
 ```
 content/
   includes/
-    base.njk      # Base layout with OG/Twitter meta
-    chapter.njk   # Chapter layout with prev/next navigation
+    base.njk      # Single layout for all pages
   css/
     style.css     # Typography styles
   img/            # Your images
   _data/
     metadata.js   # Site title, author, social info
-  chapters/       # Multi-chapter works (optional)
-    sample-chapter-1.md
-    sample-chapter-2.md
-  index.md        # Main work (single-file approach)
+  chapters/       # Multi-chapter works
+    chapter-1.md
+    chapter-2.md
+    chapter-3.md
+  index.md        # Home/contents page
   about.md        # About the author
   404.md          # Not found page
 ```
 
-## Two Approaches
+## Customization
 
-### Single-File Works
+### Site Metadata
 
-Write your entire work in `content/index.md`. Use markdown headings for chapters:
+Edit `content/_data/metadata.js`:
+
+```javascript
+export default {
+  title: "My Literary Work",
+  url: "https://example.com/",
+  language: "en",
+  description: "A description of your work",
+  author: {
+    name: "Your Name",
+    email: "you@example.com",
+    url: "https://example.com/"
+  },
+  image: "/img/cover.png",
+  twitter: "@yourhandle",
+  typekit: null  // or "your-typekit-id" for custom fonts
+}
+```
+
+### Adding Chapters
+
+Create markdown files in `content/chapters/`:
+
+```markdown
+---
+title: Chapter One
+layout: base.njk
+isChapter: true
+order: 1
+---
+
+<p class="drop">The story begins...</p>
+
+Your content here...
+```
+
+- `isChapter: true` - enables Contents link in nav and prev/next navigation
+- `order` - controls chapter sequence (1, 2, 3...)
+
+### Navigation
+
+**Home page**: Shows Title | About
+
+**Chapter pages**: Shows Title | Contents | About (top) + Prev/Next (bottom)
+
+### Typography Classes
+
+- `.drop` - Drop cap on first letter, small caps on first line
+- `.first-line` - Small caps on first line only
+
+```markdown
+<p class="drop">This paragraph has a drop cap.</p>
+```
+
+### Custom Fonts
+
+Set your Typekit ID in `metadata.js`:
+
+```javascript
+typekit: "abc1def"
+```
+
+Or edit `content/css/style.css` to use any font:
+
+```css
+body {
+  font-family: YourFont, Georgia, serif;
+}
+```
+
+### Styling
+
+Edit `content/css/style.css` to customize:
+
+- Colors (background, text, links)
+- Fonts and sizes
+- Measure (line length)
+- Navigation styling
+
+## Single-File Works
+
+For shorter works, put everything in `content/index.md`:
 
 ```markdown
 ---
@@ -70,56 +151,7 @@ Content here...
 More content...
 ```
 
-### Multi-Chapter Works
-
-Create separate files in `content/chapters/`:
-
-```markdown
----
-title: Chapter One
-layout: chapter.njk
-order: 1
----
-
-<p class="drop">The story begins...</p>
-```
-
-The `order` frontmatter controls chapter sequence. Navigation between chapters is automatic.
-
-## Configuration
-
-Edit `content/_data/metadata.js`:
-
-```javascript
-export default {
-  title: "My Literary Work",
-  url: "https://example.com/",
-  description: "A description of your work",
-  author: {
-    name: "Your Name",
-    url: "https://example.com/"
-  },
-  image: "/img/cover.png",
-  twitter: "@yourhandle",
-  typekit: "your-typekit-id"  // or null for default fonts
-}
-```
-
-## Typography
-
-The base includes literary typography:
-
-- Fluid type scaling (`clamp()`)
-- Narrow measure (48ch)
-- Drop caps (`.drop`)
-- Small caps first lines (`.drop::first-line`, `.first-line::first-line`)
-- Blockquote styling
-
-Example:
-
-```markdown
-<p class="drop">This paragraph starts with a drop cap and small caps first line.</p>
-```
+Remove the `chapters/` directory and the TOC will be empty.
 
 ## Features
 
@@ -133,3 +165,15 @@ Example:
 ## Deploy
 
 Works with Netlify, Vercel, Cloudflare Pages, and GitHub Pages.
+
+### Netlify
+
+Push to GitHub, then connect to Netlify. Build command: `npm run build`, publish directory: `_site`.
+
+### GitHub Pages
+
+Use GitHub Actions. See `.github/` for workflow examples.
+
+## License
+
+MIT
