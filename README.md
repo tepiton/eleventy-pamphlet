@@ -1,116 +1,135 @@
-# eleventy-base-blog v9
+# eleventy-base-literary
 
-A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) site generator (using the [v3.0 release](https://github.com/11ty/eleventy/releases/tag/v3.0.0)).
+An Eleventy starter for literary and chaptered works. Built for sites like [twohorses.lol](https://twohorses.lol) and [esther.lol](https://esther.lol).
 
 ## Getting Started
 
-* [Want a more generic/detailed getting started guide?](https://www.11ty.dev/docs/getting-started/)
+1. Clone this repository:
+   ```
+   git clone <your-repo-url> my-literary-site
+   cd my-literary-site
+   ```
 
-1. Make a directory and navigate to it:
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-```
-mkdir my-blog-name
-cd my-blog-name
-```
+3. Run the development server:
+   ```
+   npm run serve
+   ```
 
-2. Clone this Repository
+4. Build for production:
+   ```
+   npm run build
+   ```
 
-```
-git clone https://github.com/11ty/eleventy-base-blog.git .
-```
-
-_Optional:_ Review `eleventy.config.js` and `_data/metadata.js` to configure the site’s options and data.
-
-3. Install dependencies
-
-```
-npm install
-```
-
-4. Run Eleventy
-
-Generate a production-ready build to the `_site` folder:
+## Structure
 
 ```
-npx @11ty/eleventy
+content/
+  includes/
+    base.njk      # Base layout with OG/Twitter meta
+    chapter.njk   # Chapter layout with prev/next navigation
+  css/
+    style.css     # Typography styles
+  img/            # Your images
+  _data/
+    metadata.js   # Site title, author, social info
+  chapters/       # Multi-chapter works (optional)
+    sample-chapter-1.md
+    sample-chapter-2.md
+  index.md        # Main work (single-file approach)
+  about.md        # About the author
+  404.md          # Not found page
 ```
 
-Or build and host on a local development server:
+## Two Approaches
 
-```
-npx @11ty/eleventy --serve
+### Single-File Works
+
+Write your entire work in `content/index.md`. Use markdown headings for chapters:
+
+```markdown
+---
+title: My Story
+layout: base.njk
+---
+
+# My Story
+
+<p class="drop">Once upon a time...</p>
+
+## Chapter One
+
+Content here...
+
+## Chapter Two
+
+More content...
 ```
 
-Or you can run [debug mode](https://www.11ty.dev/docs/debugging/) to see all the internals.
+### Multi-Chapter Works
+
+Create separate files in `content/chapters/`:
+
+```markdown
+---
+title: Chapter One
+layout: chapter.njk
+order: 1
+---
+
+<p class="drop">The story begins...</p>
+```
+
+The `order` frontmatter controls chapter sequence. Navigation between chapters is automatic.
+
+## Configuration
+
+Edit `content/_data/metadata.js`:
+
+```javascript
+export default {
+  title: "My Literary Work",
+  url: "https://example.com/",
+  description: "A description of your work",
+  author: {
+    name: "Your Name",
+    url: "https://example.com/"
+  },
+  image: "/img/cover.png",
+  twitter: "@yourhandle",
+  typekit: "your-typekit-id"  // or null for default fonts
+}
+```
+
+## Typography
+
+The base includes literary typography:
+
+- Fluid type scaling (`clamp()`)
+- Narrow measure (48ch)
+- Drop caps (`.drop`)
+- Small caps first lines (`.drop::first-line`, `.first-line::first-line`)
+- Blockquote styling
+
+Example:
+
+```markdown
+<p class="drop">This paragraph starts with a drop cap and small caps first line.</p>
+```
 
 ## Features
 
-- Using [Eleventy v3](https://github.com/11ty/eleventy/releases/tag/v3.0.0) with zero-JavaScript output.
-	- Content is exclusively pre-rendered (this is a static site).
-	- Can easily [deploy to a subfolder without changing any content](https://www.11ty.dev/docs/plugins/html-base/)
-	- All URLs are decoupled from the content’s location on the file system.
-	- Configure templates via the [Eleventy Data Cascade](https://www.11ty.dev/docs/data-cascade/)
-- **Performance focused**: four-hundos Lighthouse score out of the box!
-	- _0 Cumulative Layout Shift_
-	- _0ms Total Blocking Time_
-- Local development live reload provided by [Eleventy Dev Server](https://www.11ty.dev/docs/dev-server/).
-- Content-driven [navigation menu](https://www.11ty.dev/docs/plugins/navigation/)
-- Fully automated [Image optimization](https://www.11ty.dev/docs/plugins/image/)
-	- Zero-JavaScript output.
-	- Support for modern image formats automatically (e.g. AVIF and WebP)
-	- Processes images on-request during `--serve` for speedy local builds.
-	- Prefers `<img>` markup if possible (single image format) but switches automatically to `<picture>` for multiple image formats.
-	- Automated `<picture>` syntax markup with `srcset` and optional `sizes`
-	- Includes `width`/`height` attributes to avoid [content layout shift](https://web.dev/cls/).
-	- Includes `loading="lazy"` for native lazy loading without JavaScript.
-	- Includes [`decoding="async"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding)
-	- Images can be co-located with blog post files.
-- Per page CSS bundles [via `eleventy-plugin-bundle`](https://github.com/11ty/eleventy-plugin-bundle).
-- Built-in [syntax highlighter](https://www.11ty.dev/docs/plugins/syntaxhighlight/) (zero-JavaScript output).
-- Draft content: use `draft: true` to mark any template as a draft. Drafts are **only** included during `--serve`/`--watch` and are excluded from full builds. This is driven by the `addPreprocessor` configuration API in `eleventy.config.js`. Schema validator will show an error if non-boolean value is set in data cascade.
-- Blog Posts
-	- Automated next/previous links
-	- Accessible deep links to headings
-- Generated Pages
-	- Home, Archive, and About pages.
-	- [Atom feed included (with easy one-line swap to use RSS or JSON)](https://www.11ty.dev/docs/plugins/rss/)
-	- `sitemap.xml`
-	- Zero-maintenance tag pages ([View on the Demo](https://eleventy-base-blog.netlify.app/tags/))
-	- Content not found (404) page
+- Eleventy v3 with ESM
+- markdown-it with typographer
+- RSS/Atom feed for chapters
+- Open Graph and Twitter meta tags
+- Typekit integration (optional)
+- Automatic chapter navigation
 
-## Demos
+## Deploy
 
-- [Netlify](https://eleventy-base-blog.netlify.app/)
-- [Vercel](https://demo-base-blog.11ty.dev/)
-- [Cloudflare Pages](https://eleventy-base-blog-d2a.pages.dev/)
-- [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
-
-## Deploy this to your own site
-
-Deploy this Eleventy site in just a few clicks on these services:
-
-- Read more about [Deploying an Eleventy project](https://www.11ty.dev/docs/deployment/) to the web.
-- [Deploy this to **Netlify**](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)
-- [Deploy this to **Vercel**](https://vercel.com/import/project?template=11ty%2Feleventy-base-blog)
-- Look in `.github/workflows/gh-pages.yml.sample` for information on [Deploying to **GitHub Pages**](https://www.11ty.dev/docs/deployment/#deploy-an-eleventy-project-to-git-hub-pages).
-- [Try it out on **Stackblitz**](https://stackblitz.com/github/11ty/eleventy-base-blog)
-
-### Implementation Notes
-
-- `content/about/index.md` is an example of a content page.
-- `content/blog/` has the blog posts but really they can live in any directory. They need only the `posts` tag to be included in the blog posts [collection](https://www.11ty.dev/docs/collections/).
-- Use the `eleventyNavigation` key (via the [Eleventy Navigation plugin](https://www.11ty.dev/docs/plugins/navigation/)) in your front matter to add a template to the top level site navigation. This is in use on `content/index.njk` and `content/about/index.md`.
-- Content can be in _any template format_ (blog posts needn’t exclusively be markdown, for example). Configure your project’s supported templates in `eleventy.config.js` -> `templateFormats`.
-- The `public` folder in your input directory will be copied to the output folder (via `addPassthroughCopy` in the `eleventy.config.js` file). This means `./public/css/*` will live at `./_site/css/*` after your build completes.
-- This project uses three [Eleventy Layouts](https://www.11ty.dev/docs/layouts/):
-	- `_includes/layouts/base.njk`: the top level HTML structure
-	- `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
-	- `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
-- `_includes/postslist.njk` is a Nunjucks include and is a reusable component used to display a list of all the posts. `content/index.njk` has an example of how to use it.
-
-#### Content Security Policy
-
-If your site enforces a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (as public-facing sites should), you have a few choices (pick one):
-
-1. In `base.njk`, remove `<style>{% getBundle "css" %}</style>` and uncomment `<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">`
-2. Configure the server with the CSP directive `style-src: 'unsafe-inline'` (less secure).
+Works with Netlify, Vercel, Cloudflare Pages, and GitHub Pages.

@@ -1,9 +1,10 @@
----js
-const eleventyNavigation = {
-	key: "About",
-	order: 3
-};
 ---
-# About
+title: About
+layout: base.njk
+---
 
-I am a person that writes stuff.
+# [{{ title }}](/)
+
+This is where you write about yourself and your work.
+
+You can include links, images, and any other content that helps readers learn more about you.

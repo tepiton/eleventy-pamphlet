@@ -1,0 +1,25 @@
+---
+layout: base.njk
+---
+{{ content | safe }}
+
+{% if collections.chapters and collections.chapters.length > 1 -%}
+<nav class="chapter-nav">
+  {% set chapterIndex = null -%}
+  {% for chapter in collections.chapters -%}
+    {% if chapter.url == page.url -%}
+      {% set chapterIndex = loop.index0 -%}
+    {% endif -%}
+  {% endfor -%}
+  
+  {% if chapterIndex > 0 -%}
+    {% set prevChapter = collections.chapters[chapterIndex - 1] -%}
+    <a href="{{ prevChapter.url }}" class="chapter-nav-prev">&larr; {{ prevChapter.data.title }}</a>
+  {% endif -%}
+  
+  {% if chapterIndex < collections.chapters.length - 1 -%}
+    {% set nextChapter = collections.chapters[chapterIndex + 1] -%}
+    <a href="{{ nextChapter.url }}" class="chapter-nav-next">{{ nextChapter.data.title }} &rarr;</a>
+  {% endif -%}
+</nav>
+{% endif -%}
