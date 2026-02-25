@@ -183,6 +183,43 @@ OpenCode is the minimal option. Claude has best documentation and polish. Codex 
 1. `1228bdb` - Convert base blog to literary site template
 2. `07cf9fa` - Simplify to single layout with improved navigation
 
+## GitHub Pages Deployment Fix
+
+### Problem
+
+When deploying to GitHub Pages at `https://tepiton.github.io/eleventy-pamphlet/`, URLs were getting double pathPrefix:
+
+```
+/eleventy-pamphlet/eleventy-pamphlet/chapters/chapter-1/
+```
+
+Should be:
+
+```
+/eleventy-pamphlet/chapters/chapter-1/
+```
+
+Local builds worked fine. The base repo (`eleventy-base-pb`) deployed correctly with the same workflow.
+
+### Root Cause
+
+The pamphlet repo's `eleventy.config.js` was missing explicit plugin declarations that the base repo has. The RSS feed plugin (`feedPlugin`) automatically adds `HtmlBasePlugin` internally, but without explicitly adding it at the project level, the URL transformation was being applied inconsistently.
+
+### Fix
+
+Added explicit plugin declarations to `eleventy.config.js`:
+
+```js
+eleventyConfig.addPlugin(HtmlBasePlugin);
+eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
+```
+
+These plugins handle the `--pathprefix` transformation correctly when declared explicitly.
+
+### Commit
+
+- `0e8d6d5` - Fix double pathPrefix issue by explicitly adding HtmlBasePlugin and InputPathToUrlTransformPlugin
+
 ## Summary
 
 Built a minimal Eleventy starter for literary sites with:
@@ -191,5 +228,6 @@ Built a minimal Eleventy starter for literary sites with:
 - RSS feed
 - Three sample chapters with navigation
 - Dev server on port 8086, all interfaces
+- Proper GitHub Pages deployment support
 
 The result is the simplest of the three LLM implementations, trading features for clarity and build speed.
