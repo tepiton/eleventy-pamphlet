@@ -231,3 +231,18 @@ Built a minimal Eleventy starter for literary sites with:
 - Proper GitHub Pages deployment support
 
 The result is the simplest of the three LLM implementations, trading features for clarity and build speed.
+
+---
+
+## README rewrite (2026-02-25)
+
+Rewrote `README.md`. Previous version had the title `eleventy-base-literary` (the original OpenCode name) and included filler sections (Netlify deploy, Vercel, single-file works) that aren't specific to this template.
+
+New README covers:
+- Correct repo name `eleventy-pamphlet` as title
+- `content/_data/metadata.js` path documented with a note explaining why it's under `content/` (Eleventy input dir)
+- Full metadata schema including `image`, `twitter`, and `typekit` fields
+- Chapters, typography classes, home and about pages
+- Project structure tree reflecting the actual layout (`content/includes/` not `_includes/`)
+- npm scripts table (uses `serve` not `start`)
+- Deploy section
