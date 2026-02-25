@@ -1,3 +1,4 @@
+import { HtmlBasePlugin, InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import markdownIt from "markdown-it";
 
@@ -25,6 +26,9 @@ export default function(eleventyConfig) {
     showAllHosts: true,
     port: 8086
   });
+
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+  eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
