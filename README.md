@@ -60,9 +60,29 @@ Edit `content/index.md`. Put your title page, foreword, or opening here.
 
 Edit `content/about.md`.
 
-### Custom fonts
+### Fonts, colors, and styles
 
-Set a Typekit kit ID in `metadata.js`, or edit `content/css/style.css` to use any font stack directly.
+Fonts and colors are set directly in `content/css/style.css`. The main values to change:
+
+```css
+body {
+  background-color: #fffff8;  /* page background */
+  color: #111;                /* body text */
+  font-family: Palatino, Georgia, serif;  /* body font */
+}
+
+h1, h2, h3 {
+  font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;  /* heading font */
+}
+
+a {
+  color: #555;  /* link color */
+}
+```
+
+**Adobe Fonts (Typekit):** Set `typekit` in `content/_data/metadata.js` to a kit ID string from [fonts.adobe.com](https://fonts.adobe.com). The kit ID is the hash in the `use.typekit.net/<id>.css` URL. Set it to `null` to use the system font stacks instead.
+
+**Other web fonts:** Add a `<link>` to your font provider in `content/includes/base.njk` and update the `font-family` values in `style.css` to match.
 
 ### Typography classes
 
