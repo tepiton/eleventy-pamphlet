@@ -1,5 +1,5 @@
 html {
-  font-size: clamp(5px, .8rem + 1vw, 92px);
+  font-size: clamp(5px, .8rem + 1vw, 36px);
 }
 
 body {
@@ -64,6 +64,27 @@ h4 {
   margin-top: 3em;
   text-align: center;
   letter-spacing: -.04em;
+}
+
+
+summary {
+  font-size: inherit;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 3em;
+  margin-left: -2em;
+  text-align: left;
+  letter-spacing: -.04em;
+}
+
+details {
+	font-family: monospace;
+	color: #773;
+	margin-left: 2em;
+	margin-right: 2em;
+	font-size: 60%;
+	line-height: 1.125;
+
 }
 
 h2 + h4 {

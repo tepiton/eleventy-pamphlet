@@ -246,3 +246,48 @@ New README covers:
 - Project structure tree reflecting the actual layout (`content/includes/` not `_includes/`)
 - npm scripts table (uses `serve` not `start`)
 - Deploy section
+
+---
+
+## `<details>` styling and font-size cap (2026-02-26)
+
+Two CSS changes from real-world usage:
+
+### Font size cap
+
+Lowered `clamp` max from `92px` to `36px`:
+
+```css
+font-size: clamp(5px, .8rem + 1vw, 36px);
+```
+
+The 92px ceiling was too large at wide viewports.
+
+### `<details>` / `<summary>` styling
+
+Added styles for `<details>` blocks intended as expandable asides — citations, digressions, supplementary material that would interrupt the main text:
+
+```css
+summary {
+  font-size: inherit;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 3em;
+  margin-left: -2em;
+  text-align: left;
+  letter-spacing: -.04em;
+}
+
+details {
+  font-family: monospace;
+  color: #773;
+  margin-left: 2em;
+  margin-right: 2em;
+  font-size: 60%;
+  line-height: 1.125;
+}
+```
+
+The `summary` pulls left with negative margin to sit outside the text column. The `details` content renders in monospace at 60%, indented, in a muted olive tone — visually distinct from body text.
+
+Added a sample `<details>` block to `content/chapters/chapter-1.md` demonstrating the pattern.
