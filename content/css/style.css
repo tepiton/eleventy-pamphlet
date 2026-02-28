@@ -1,3 +1,8 @@
+:root {
+  --font-body: p22-stickley-pro-text, neue-kabel, Palatino, Georgia, serif;
+  --font-heading: neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif;
+}
+
 html {
   font-size: clamp(5px, .8rem + 1vw, 36px);
 }
@@ -7,7 +12,7 @@ body {
   background-color: #fffff8;
   color: #111;
   counter-reset: sidenote-counter;
-  font-family: Palatino, Georgia, serif;
+  font-family: var(--font-body);
   margin: 0;
   width: 100vw;
   box-sizing: content-box;
@@ -31,7 +36,7 @@ p {
 }
 
 h1, h2 {
-  font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 600;
 }
 
@@ -50,13 +55,13 @@ h2 {
 h3 {
   font-style: italic;
   font-size: inherit;
-  font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 400;
   margin-bottom: 0;
 }
 
 h4 {
-  font-family: Palatino, Georgia, serif;
+  font-family: var(--font-body);
   font-style: italic;
   font-size: inherit;
   font-weight: 600;
@@ -142,7 +147,7 @@ a:hover {
   align-items: baseline;
   padding: 1rem 0;
   font-size: .85rem;
-  font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-heading);
   border-bottom: 1px solid #ddd;
   margin-bottom: 2rem;
 }
@@ -185,7 +190,7 @@ a:hover {
   padding-top: 1em;
   border-top: 1px solid #ccc;
   font-size: .9em;
-  font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-heading);
 }
 
 .chapter-nav-left {

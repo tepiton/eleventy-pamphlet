@@ -291,3 +291,28 @@ details {
 The `summary` pulls left with negative margin to sit outside the text column. The `details` content renders in monospace at 60%, indented, in a muted olive tone — visually distinct from body text.
 
 Added a sample `<details>` block to `content/chapters/chapter-1.md` demonstrating the pattern.
+
+---
+
+## Parameterized fonts + Typekit (2026-02-27)
+
+Pulled font choices from [esther.lol](https://esther.lol) and baked them into the template.
+
+### CSS custom properties
+
+Added `--font-body` and `--font-heading` to `:root` in `style.css`. All `font-family` declarations now use these vars, making it easy to swap fonts in one place:
+
+```css
+:root {
+  --font-body: p22-stickley-pro-text, neue-kabel, Palatino, Georgia, serif;
+  --font-heading: neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif;
+}
+```
+
+`h4` (section dividers) uses `--font-body` since it's a display use of the serif face. `details` keeps `monospace` (intentional).
+
+### Typekit
+
+Baked the two esther.lol Typekit kit IDs directly into `base.njk` rather than threading them through `metadata.js`. Since the CSS vars reference these font names explicitly, the kits and the CSS are coupled — making that explicit in the layout is more honest than a configurable field that would break things if removed.
+
+Removed the `typekit` field from `metadata.js` entirely.

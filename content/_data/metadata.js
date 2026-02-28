@@ -9,6 +9,5 @@ export default {
     url: "https://example.com/"
   },
   image: "/img/cover.png",
-  twitter: "@yourhandle",
-  typekit: null
+  twitter: "@yourhandle"
 }
