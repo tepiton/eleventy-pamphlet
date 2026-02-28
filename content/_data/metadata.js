@@ -1,5 +1,5 @@
 export default {
-  title: "My Literary Work",
+  title: "Pamphlet",
   url: "https://example.com/",
   language: "en",
   description: "A description of this literary work",

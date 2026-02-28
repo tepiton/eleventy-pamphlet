@@ -1,5 +1,5 @@
 ---
-title: My Literary Work
+title: Pamphlet
 layout: base.njk
 ---
 
