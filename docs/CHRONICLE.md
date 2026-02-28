@@ -294,6 +294,20 @@ Added a sample `<details>` block to `content/chapters/chapter-1.md` demonstratin
 
 ---
 
+## Font parameterization and Typekit (2026-02-27)
+
+Added `--font-body` and `--font-heading` CSS custom properties to `:root` in `style.css`, set to the esther.lol font stacks. All `font-family` declarations replaced with `var(--font-body)` or `var(--font-heading)`. Baked the two Typekit kit IDs directly into `base.njk`; removed the `typekit` field from `metadata.js`.
+
+Renamed `serve` script to `start` in `package.json` for consistency with the other templates.
+
+## Site URL and title (2026-02-27)
+
+- Set `metadata.url` to `https://orobia.lol/`
+- Set `metadata.title` and `content/index.md` title to `"Pamphlet"`
+- Updated `content/about.md` to reference orobia.lol
+
+---
+
 ## Parameterized fonts + Typekit (2026-02-27)
 
 Pulled font choices from [esther.lol](https://esther.lol) and baked them into the template.
