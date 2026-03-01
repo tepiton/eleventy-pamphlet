@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve",
+    "start": "npx @11ty/eleventy --serve --port=8086",
     "clean": "rm -rf _site",
     "debug": "DEBUG=* npx @11ty/eleventy"
   },

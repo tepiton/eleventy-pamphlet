@@ -23,8 +23,7 @@ export default function(eleventyConfig) {
   });
 
   eleventyConfig.setServerOptions({
-    showAllHosts: true,
-    port: 8086
+    showAllHosts: true
   });
 
   eleventyConfig.addPlugin(HtmlBasePlugin);

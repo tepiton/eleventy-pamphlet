@@ -1,6 +1,13 @@
 # eleventy-pamphlet
 
-An Eleventy v3 starter for short literary works: novellas, single-volume fiction, pamphlets. Simpler structure than eleventy-chapbook — one layout, no blog.
+An Eleventy v3 starter for short literary works: novellas, single-volume fiction, pamphlets. Simpler structure than eleventy-chapbook - one layout, no blog.
+
+Part of a family of interoperable templates:
+- **eleventy-pamphlet** (this) - minimal, single layout
+- **eleventy-chapbook** - separate layouts, feature-rich
+- **eleventy-folio** - polished, with extras
+
+The `content/` directory is portable across all three. Swap templates to change the presentation without touching your content.
 
 ## Quick start
 
@@ -8,10 +15,10 @@ An Eleventy v3 starter for short literary works: novellas, single-volume fiction
 git clone <this-repo> my-project
 cd my-project
 npm install
-npm run serve
+npm run start
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://localhost:8086`.
 
 ## Customization
 
@@ -31,12 +38,11 @@ export default {
     url: "https://example.com/"
   },
   image: "/img/cover.png",
-  twitter: "@yourhandle",
-  typekit: null  // or a Typekit kit ID string for Adobe Fonts
+  twitter: "@yourhandle"
 }
 ```
 
-Note: `metadata.js` lives inside `content/_data/` because `content/` is the Eleventy input directory.
+Note: `metadata.js` lives inside `content/_data/` so the entire `content/` directory is self-contained and portable.
 
 ### Chapters
 
@@ -45,11 +51,13 @@ Add files to `content/chapters/`. Each needs front matter:
 ```yaml
 ---
 title: Chapter One
+isChapter: true
 order: 1
 ---
 ```
 
-- `order` controls chapter sequence and prev/next navigation
+- `isChapter` enables chapter navigation (Contents link, prev/next)
+- `order` controls chapter sequence
 - Filename determines the URL: `chapter-1.md` → `/chapters/chapter-1/`
 
 ### Home page
@@ -80,9 +88,9 @@ a {
 }
 ```
 
-**Adobe Fonts (Typekit):** Set `typekit` in `content/_data/metadata.js` to a kit ID string from [fonts.adobe.com](https://fonts.adobe.com). The kit ID is the hash in the `use.typekit.net/<id>.css` URL. Set it to `null` to use the system font stacks instead.
+**Adobe Fonts (Typekit):** This template uses `p22-stickley-pro-text` and `neue-kabel` from Adobe Fonts. The kit IDs are baked into `content/includes/base.njk`. To use different fonts, replace the Typekit `<link>` tags and update the CSS variables.
 
-**Other web fonts:** Add a `<link>` to your font provider in `content/includes/base.njk` and update the `font-family` values in `style.css` to match.
+**Other web fonts:** Add a `<link>` to your font provider in `content/includes/base.njk` and update the `--font-body` and `--font-heading` variables in `style.css`.
 
 ### Typography classes
 
@@ -99,24 +107,27 @@ a {
 content/
   _data/
     metadata.js          # Title, author, URL, social info
-  index.md               # Home / title page
-  about.md               # About the author
-  404.md                 # Not found page
   chapters/
+    chapters.11tydata.js # Layout for all chapters
     chapter-1.md
     chapter-2.md
     ...
+  index.md               # Home / title page
+  about.md               # About the author
+  404.md                 # Not found page
   css/
     style.css            # All styles
   includes/
     base.njk             # Single layout for all pages
 ```
 
+The `content/` directory is designed to be portable. Copy it to eleventy-chapbook or eleventy-folio to get a different presentation with the same content.
+
 ## npm scripts
 
 | Command | Description |
 |:--------|:------------|
-| `npm run serve` | Dev server with live reload |
+| `npm run start` | Dev server at `localhost:8086` with live reload |
 | `npm run build` | Production build to `_site/` |
 | `npm run clean` | Remove `_site/` |
 | `npm run debug` | Build with full debug output |

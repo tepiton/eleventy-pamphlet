@@ -1,6 +1,5 @@
 ---
 title: Chapter One
-layout: base.njk
 isChapter: true
 order: 1
 ---

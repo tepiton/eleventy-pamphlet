@@ -330,3 +330,19 @@ Added `--font-body` and `--font-heading` to `:root` in `style.css`. All `font-fa
 Baked the two esther.lol Typekit kit IDs directly into `base.njk` rather than threading them through `metadata.js`. Since the CSS vars reference these font names explicitly, the kits and the CSS are coupled — making that explicit in the layout is more honest than a configurable field that would break things if removed.
 
 Removed the `typekit` field from `metadata.js` entirely.
+
+---
+
+## Content portability (2026-02-28)
+
+Made `content/` fully portable across the three template family (pamphlet, chapbook, folio).
+
+### Changes
+
+1. Created `content/chapters/chapters.11tydata.js` to set layout centrally
+2. Removed `layout: base.njk` from chapter frontmatter (now inherited from `.11tydata.js`)
+3. Moved port from `eleventy.config.js` to `package.json` start script
+
+### Result
+
+The `content/` directory is now self-contained. Drop it into any of the three templates and it works. Each template provides its own layouts, CSS, and personality.
