@@ -6,6 +6,7 @@ export default function(eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy("content/img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
 
   const md = markdownIt({
     html: true,
