@@ -87,9 +87,9 @@ a {
 }
 ```
 
-**Adobe Fonts (Typekit):** This template uses `p22-stickley-pro-text` and `neue-kabel` from Adobe Fonts. The kit IDs are baked into `content/includes/base.njk`. To use different fonts, replace the Typekit `<link>` tags and update the CSS variables.
+**Adobe Fonts (Typekit):** This template uses `p22-stickley-pro-text` and `neue-kabel` from Adobe Fonts. The kit IDs are baked into `_includes/layouts/base.njk`. To use different fonts, replace the Typekit `<link>` tags and update the CSS variables.
 
-**Other web fonts:** Add a `<link>` to your font provider in `content/includes/base.njk` and update the `--font-body` and `--font-heading` variables in `style.css`.
+**Other web fonts:** Add a `<link>` to your font provider in `_includes/layouts/base.njk` and update the `--font-body` and `--font-heading` variables in `style.css`.
 
 ### Typography classes
 
@@ -107,16 +107,17 @@ content/
   _data/
     metadata.js          # Title, author, URL, social info
   chapters/
-    chapters.11tydata.js # Layout for all chapters
     chapter-1.md
     chapter-2.md
     ...
+  content.11tydata.js    # Default layout for all content
   index.md               # Home / title page
   about.md               # About the author
   404.md                 # Not found page
   css/
     style.css            # All styles
-  includes/
+_includes/
+  layouts/
     base.njk             # Single layout for all pages
 ```
 

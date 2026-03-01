@@ -346,3 +346,23 @@ Made `content/` fully portable across the three template family (pamphlet, chapb
 ### Result
 
 The `content/` directory is now self-contained. Drop it into any of the three templates and it works. Each template provides its own layouts, CSS, and personality.
+
+---
+
+## Align includes path with chapbook/folio (2026-03-01)
+
+Moved layouts outside `content/` to match the other templates.
+
+### Changes
+
+1. Moved `content/includes/base.njk` to `_includes/layouts/base.njk`
+2. Deleted `content/includes/` directory
+3. Updated `eleventy.config.js` includes path from `includes` to `../_includes`
+4. Created `content/content.11tydata.js` to set default layout for all content
+5. Removed `layout` from individual content files (index.md, about.md, 404.md)
+6. Deleted `content/chapters/chapters.11tydata.js` (now redundant)
+7. Updated README to reflect new structure
+
+### Result
+
+Directory structure now matches chapbook and folio - `content/` is purely data + markdown, layouts live in `_includes/layouts/`.

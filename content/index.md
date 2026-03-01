@@ -1,6 +1,5 @@
 ---
 title: Pamphlet
-layout: base.njk
 ---
 
 # {{ title }}
