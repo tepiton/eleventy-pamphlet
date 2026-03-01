@@ -124,13 +124,12 @@ summary {
 }
 
 details {
-	font-family: monospace;
-	color: #773;
-	margin-left: 2em;
-	margin-right: 2em;
-	font-size: 60%;
-	line-height: 1.125;
-
+  font-family: monospace;
+  color: var(--color-muted);
+  margin-left: 2em;
+  margin-right: 2em;
+  font-size: 60%;
+  line-height: 1.125;
 }
 
 h2 + h4 {
