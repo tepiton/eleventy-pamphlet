@@ -366,3 +366,15 @@ Moved layouts outside `content/` to match the other templates.
 ### Result
 
 Directory structure now matches chapbook and folio - `content/` is purely data + markdown, layouts live in `_includes/layouts/`.
+
+---
+
+## Move CSS outside content/ (2026-03-01)
+
+Moved `content/css/` to `css/` at the root level to match chapbook and folio. CSS is part of the template's skin, not portable content.
+
+### Changes
+
+1. Moved `content/css/` to `css/`
+2. Updated `eleventy.config.js` passthrough copy path
+3. Updated README

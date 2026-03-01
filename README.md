@@ -114,8 +114,8 @@ content/
   index.md               # Home / title page
   about.md               # About the author
   404.md                 # Not found page
-  css/
-    style.css            # All styles
+css/
+  style.css              # All styles
 _includes/
   layouts/
     base.njk             # Single layout for all pages

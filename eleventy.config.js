@@ -5,7 +5,7 @@ import markdownIt from "markdown-it";
 export default function(eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy("content/img");
-  eleventyConfig.addPassthroughCopy("content/css");
+  eleventyConfig.addPassthroughCopy("css");
 
   const md = markdownIt({
     html: true,
