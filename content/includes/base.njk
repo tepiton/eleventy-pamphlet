@@ -36,15 +36,15 @@
   
   {{ content | safe }}
   
-  {% if isChapter and collections.chapters and collections.chapters.length > 1 -%}
+  {% if collections.chapters and collections.chapters.length > 1 -%}
+  {% set chapterIndex = null -%}
+  {% for chapter in collections.chapters -%}
+    {% if chapter.url == page.url -%}
+      {% set chapterIndex = loop.index0 -%}
+    {% endif -%}
+  {% endfor -%}
+  {% if chapterIndex !== null -%}
   <nav class="chapter-nav">
-    {% set chapterIndex = null -%}
-    {% for chapter in collections.chapters -%}
-      {% if chapter.url == page.url -%}
-        {% set chapterIndex = loop.index0 -%}
-      {% endif -%}
-    {% endfor -%}
-    
     <div class="chapter-nav-left">
       {% if chapterIndex > 0 -%}
         {% set prevChapter = collections.chapters[chapterIndex - 1] -%}
@@ -59,6 +59,7 @@
       {% endif -%}
     </div>
   </nav>
+  {% endif -%}
   {% endif -%}
 </body>
 </html>

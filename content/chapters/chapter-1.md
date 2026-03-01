@@ -1,6 +1,5 @@
 ---
 title: Chapter One
-isChapter: true
 order: 1
 ---
 

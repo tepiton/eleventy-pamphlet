@@ -51,14 +51,13 @@ Add files to `content/chapters/`. Each needs front matter:
 ```yaml
 ---
 title: Chapter One
-isChapter: true
 order: 1
 ---
 ```
 
-- `isChapter` enables chapter navigation (Contents link, prev/next)
 - `order` controls chapter sequence
 - Filename determines the URL: `chapter-1.md` → `/chapters/chapter-1/`
+- Chapters are detected automatically by location - no tag or flag needed
 
 ### Home page
 

@@ -1,6 +1,5 @@
 ---
 title: Chapter Three
-isChapter: true
 order: 3
 ---
 
