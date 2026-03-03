@@ -52,32 +52,6 @@
   </nav>
   
   {{ content | safe }}
-  
-  {% if collections.chapters and collections.chapters.length > 1 -%}
-  {% set chapterIndex = null -%}
-  {% for chapter in collections.chapters -%}
-    {% if chapter.url == page.url -%}
-      {% set chapterIndex = loop.index0 -%}
-    {% endif -%}
-  {% endfor -%}
-  {% if chapterIndex !== null -%}
-  <nav class="chapter-nav">
-    <div class="chapter-nav-left">
-      {% if chapterIndex > 0 -%}
-        {% set prevChapter = collections.chapters[chapterIndex - 1] -%}
-        <a href="{{ prevChapter.url }}">&larr; {{ prevChapter.data.title }}</a>
-      {% endif -%}
-    </div>
-    
-    <div class="chapter-nav-right">
-      {% if chapterIndex < collections.chapters.length - 1 -%}
-        {% set nextChapter = collections.chapters[chapterIndex + 1] -%}
-        <a href="{{ nextChapter.url }}">{{ nextChapter.data.title }} &rarr;</a>
-      {% endif -%}
-    </div>
-  </nav>
-  {% endif -%}
-  {% endif -%}
   <script type="module" src="/js/theme-switcher.js"></script>
 </body>
 </html>
