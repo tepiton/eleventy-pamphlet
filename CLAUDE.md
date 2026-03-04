@@ -2,13 +2,46 @@
 
 ## Project Overview
 
-This is the `eleventy-pamphlet` template repo (`github.com/tepiton/eleventy-pamphlet`), a minimal Eleventy v3 starter for single literary works. It is one of three related templates:
+This is the `eleventy-pamphlet` template repo (`github.com/tepiton/eleventy-pamphlet`), a minimal Eleventy v3 starter for single literary works. It is one of three interoperable templates:
 
-- **eleventy-pamphlet** → served from `orobia.lol`
-- **eleventy-chapbook** → served from `orobia.dev`
-- **eleventy-folio** → served from `orobia.net`
+- **eleventy-pamphlet** → served from `orobia.lol` (port 8086)
+- **eleventy-chapbook** → served from `orobia.dev` (port 8082)
+- **eleventy-folio** → served from `orobia.net` (port 8084)
 
 All three live at `/Users/philip/projects/mimeo-sites/TEMPLATES/`.
+
+## Content Portability
+
+The `content/` directory is fully portable across all three templates. Drop a `content/` folder into any of the three repos and it renders correctly.
+
+### Standardized content/ structure
+
+```
+content/
+  _data/
+    metadata.js           # title, author, description, url, etc.
+  chapters/
+    chapters.11tydata.js  # layout: layouts/chapter.njk
+    *.md                  # order + title in frontmatter
+  content.11tydata.js     # layout: layouts/base.njk (default)
+  index.md
+  about.md
+  404.md
+```
+
+### Single-page vs multi-chapter
+
+- **Multi-chapter**: Keep `content/chapters/` directory
+- **Single-page**: Delete `content/chapters/` directory entirely
+
+### Requirements for portability
+
+All three templates must have:
+1. `content/_data/metadata.js` (same path, same schema)
+2. `_includes/layouts/base.njk` (default layout)
+3. `_includes/layouts/chapter.njk` (chapter layout, extends base.njk)
+4. `chapters` collection via `getFilteredByGlob("content/chapters/*.md")`
+5. Chapter templates use `{{ order }}` (not `{{ chapterNumber }}`)
 
 ## Font Setup (all three templates)
 
@@ -20,17 +53,14 @@ All three use the same fonts from esther.lol, baked in directly:
 - **Font size**: `clamp(1rem, .8rem + 1vw, 1.25rem)` on `html` — aligned across all three templates
 - CSS vars: `--font-body` and `--font-heading` in `:root`
 
-## CSS Location
+## File Locations
 
-- pamphlet: `content/css/style.css`
-- chapbook: `css/index.css`
-- folio: `css/index.css`
-
-## Base Layout Location
-
-- pamphlet: `content/includes/base.njk`
-- chapbook: `_includes/layouts/base.njk`
-- folio: `_includes/layouts/base.njk`
+| File | pamphlet | chapbook | folio |
+|------|----------|----------|-------|
+| CSS | `css/style.css` | `css/index.css` | `css/index.css` |
+| Base layout | `_includes/layouts/base.njk` | `_includes/layouts/base.njk` | `_includes/layouts/base.njk` |
+| Chapter layout | `_includes/layouts/chapter.njk` | `_includes/layouts/chapter.njk` | `_includes/layouts/chapter.njk` |
+| Home layout | (uses base.njk) | `_includes/layouts/home.njk` | `_includes/layouts/home.njk` |
 
 ## npm Scripts
 
@@ -41,6 +71,7 @@ All three use `npm start` to serve.
 - Typekit kit IDs are baked into `base.njk`, not in `metadata.js`
 - `metadata.js` does NOT have a `typekit` field
 - Chronicles are kept in `docs/CHRONICLE.md` in each repo
+- Interoperability plan in `docs/INTEROPERABILITY.md`
 - Commit messages must use plain hyphens — em dashes break heredoc syntax in bash
 
 ## Git Notes
