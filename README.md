@@ -60,6 +60,8 @@ order: 1
 - Chapters are detected automatically by location - no tag or flag needed
 - Chapter pages get a numbered header and prev/next navigation
 
+**Chapter sorting:** Chapters are sorted by `order` property (ascending, fallback to 999 if missing), then by filename alphabetically for determinism.
+
 **Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.md` becomes the whole work. It inherits the base layout with no chapter navigation.
 
 ### Home page

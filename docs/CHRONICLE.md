@@ -51,6 +51,11 @@ Separated chapter-specific layout from base.njk to align with chapbook and folio
 
 Added colophon (fonts, measure) and GitHub source link.
 
+### 2026-03-03: Standardize chapter sorting
+
+1. Changed `order` fallback from 0 to 999 (chapters without order sort to end)
+2. Added secondary sort by filename for deterministic ordering when order is equal
+
 ### 2026-03-01: Move CSS outside content/
 
 Moved `content/css/` to `css/` at root level. CSS is template skin, not portable content.
