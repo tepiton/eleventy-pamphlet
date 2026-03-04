@@ -1,6 +1,6 @@
 # eleventy-pamphlet
 
-An Eleventy v3 starter for short literary works: novellas, single-volume fiction, pamphlets. Simpler structure than eleventy-chapbook - one layout, no blog.
+An Eleventy v3 starter for short literary works: novellas, single-volume fiction, pamphlets. Minimal structure with two layouts.
 
 Part of a family of interoperable templates:
 - **eleventy-pamphlet** (this) - minimal, single layout
@@ -44,9 +44,9 @@ export default {
 
 Note: `metadata.js` lives inside `content/_data/` so the entire `content/` directory is self-contained and portable.
 
-### Chapters
+### Single-page vs multi-chapter
 
-Add files to `content/chapters/`. Each needs front matter:
+**Multi-chapter works:** Add files to `content/chapters/`. Each needs front matter:
 
 ```yaml
 ---
@@ -58,6 +58,9 @@ order: 1
 - `order` controls chapter sequence
 - Filename determines the URL: `chapter-1.md` → `/chapters/chapter-1/`
 - Chapters are detected automatically by location - no tag or flag needed
+- Chapter pages get a numbered header and prev/next navigation
+
+**Single-page works:** Delete the `content/chapters/` directory entirely. Your `index.md` becomes the whole work. It inherits the base layout with no chapter navigation.
 
 ### Home page
 
@@ -69,7 +72,7 @@ Edit `content/about.md`.
 
 ### Fonts, colors, and styles
 
-Fonts and colors are set directly in `content/css/style.css`. The main values to change:
+Fonts and colors are set directly in `css/style.css`. The main values to change:
 
 ```css
 body {
@@ -118,7 +121,8 @@ css/
   style.css              # All styles
 _includes/
   layouts/
-    base.njk             # Single layout for all pages
+    base.njk             # Shell for all pages
+    chapter.njk          # Chapter wrapper with prev/next
 ```
 
 The `content/` directory is designed to be portable. Copy it to eleventy-chapbook or eleventy-folio to get a different presentation with the same content.
