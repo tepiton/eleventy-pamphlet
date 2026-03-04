@@ -47,6 +47,10 @@ Separated chapter-specific layout from base.njk to align with chapbook and folio
 3. Removed inline chapter navigation from `base.njk`
 4. Added `.chapter-header` and `.chapter-number` CSS styles
 
+### 2026-03-03: Update about.md
+
+Added colophon (fonts, measure) and GitHub source link.
+
 ### 2026-03-01: Move CSS outside content/
 
 Moved `content/css/` to `css/` at root level. CSS is template skin, not portable content.
