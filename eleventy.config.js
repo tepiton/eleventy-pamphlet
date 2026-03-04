@@ -19,7 +19,7 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addCollection("chapters", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/chapters/*.md").sort((a, b) => {
-      return (a.data.order || 0) - (b.data.order || 0);
+      return (a.data.order ?? 999) - (b.data.order ?? 999);
     });
   });
 
