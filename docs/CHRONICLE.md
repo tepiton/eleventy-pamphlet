@@ -38,6 +38,14 @@ css/style.css
 
 ## Recent Changes
 
+### 2026-03-30: Schema, OG meta, and version alignment
+
+Aligned with folio and chapbook for cross-template parity.
+
+1. Bumped Eleventy from `^3.0.0` to `^3.1.2`
+2. Dropped `twitter` from `content/_data/metadata.js`, added `subtitle: ""`; `image` value reset to `""`
+3. Removed Twitter meta tags from `base.njk`; `og:image` is now conditional
+
 ### 2026-03-03: Create chapter.njk layout
 
 Separated chapter-specific layout from base.njk to align with chapbook and folio.

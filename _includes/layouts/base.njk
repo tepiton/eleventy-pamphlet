@@ -6,17 +6,11 @@
   <title>{{ title or metadata.title }}</title>
   <meta name="description" content="{{ description or excerpt or metadata.description }}">
   
-  <meta property="og:title" content="{{ title or metadata.title }} &bull; {{ metadata.title }}">
+  <meta property="og:title" content="{{ title or metadata.title }}">
+  <meta property="og:description" content="{{ description or excerpt or metadata.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ metadata.image }}">
-  <meta property="og:description" content="{{ description or excerpt or metadata.description }}">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="{{ metadata.twitter }}">
-  <meta name="twitter:title" content="{{ title or metadata.title }} &bull; {{ metadata.title }}">
-  <meta name="twitter:description" content="{{ description or excerpt or metadata.description }}">
-  <meta name="twitter:image" content="{{ metadata.image }}">
+  {% if metadata.image %}<meta property="og:image" content="{{ metadata.image }}">{% endif %}
   
   <link rel="stylesheet" href="https://use.typekit.net/ztn6rcs.css">
   <link rel="stylesheet" href="https://use.typekit.net/pgn7ley.css">

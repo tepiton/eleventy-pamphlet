@@ -1,5 +1,6 @@
 export default {
   title: "Pamphlet",
+  subtitle: "",
   url: "https://orobia.lol/",
   language: "en",
   description: "A description of this literary work",
@@ -8,6 +9,5 @@ export default {
     email: "you@example.com",
     url: "https://orobia.lol/"
   },
-  image: "/img/cover.png",
-  twitter: "@yourhandle"
+  image: "",
 }
