@@ -1,6 +1,7 @@
 import { HtmlBasePlugin, InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import markdownIt from "markdown-it";
+import metadata from "./content/_data/metadata.js";
 
 export default function(eleventyConfig) {
   
@@ -44,7 +45,7 @@ export default function(eleventyConfig) {
       language: "en",
       title: "My Literary Work",
       subtitle: "A description of this work",
-      base: "https://example.com/",
+      base: metadata.url,
       author: {
         name: "Your Name"
       }

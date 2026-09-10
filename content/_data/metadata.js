@@ -1,13 +1,11 @@
 export default {
   title: "Pamphlet",
   subtitle: "",
-  url: "https://orobia.lol/",
+  url: "https://example.com/",
   language: "en",
   description: "A description of this literary work",
   author: {
     name: "Your Name",
-    email: "you@example.com",
-    url: "https://orobia.lol/"
   },
   image: "",
 }
