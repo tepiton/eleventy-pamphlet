@@ -39,7 +39,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           CUSTOM_DOMAIN="$(
-            gh api "epos/$GITHUB_REPOSITORY/pages" \
+            gh api "repos/$GITHUB_REPOSITORY/pages" \
                --jq '.cname // empty'
           )"
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
