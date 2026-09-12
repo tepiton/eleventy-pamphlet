@@ -35,6 +35,8 @@ jobs:
 
       - name: Compute path prefix
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           CUSTOM_DOMAIN="$(
             gh api "epos/$GITHUB_REPOSITORY/pages" \
