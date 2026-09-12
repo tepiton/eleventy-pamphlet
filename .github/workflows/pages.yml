@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -36,7 +36,9 @@ jobs:
       - name: Compute path prefix
         shell: bash
         run: |
-          CUSTOM_DOMAIN="$(echo foo
+          CUSTOM_DOMAIN="$(
+            gh api "repos/$GITHUB_REPOSITORY/pages" \
+               --jq '.cname // empty'
           )"
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
           if [[ "$REPO_NAME" == *.github.io ]]; then
