@@ -37,7 +37,7 @@ jobs:
         shell: bash
         run: |
           CUSTOM_DOMAIN="$(
-            gh api "repos/$GITHUB_REPOSITORY/pages" \
+            gh api "epos/$GITHUB_REPOSITORY/pages" \
                --jq '.cname // empty'
           )"
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
@@ -45,6 +45,11 @@ jobs:
             echo "PATHPREFIX=$REPO_NAME/" >> "$GITHUB_ENV"
           else
             echo "PATHPREFIX=/" >> "$GITHUB_ENV"
+          fi
+          if [[ -n "$CUSTOM_DOMAIN" ]] then
+            echo "PATHPREFIX=/" >> "$GITHUB_ENV"
+          else
+            echo "PATHPREFIX=$REPO_NAME" >> "$GITHUB_ENV"
           fi
 
       - name: Build (Eleventy)
