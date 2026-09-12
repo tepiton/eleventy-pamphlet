@@ -41,12 +41,7 @@ jobs:
                --jq '.cname // empty'
           )"
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
-          if [[ "$REPO_NAME" == *.github.io ]]; then
-            echo "PATHPREFIX=$REPO_NAME/" >> "$GITHUB_ENV"
-          else
-            echo "PATHPREFIX=/" >> "$GITHUB_ENV"
-          fi
-          if [[ -n "$CUSTOM_DOMAIN" ]] then
+          if [[ -n "$CUSTOM_DOMAIN" ]]; then
             echo "PATHPREFIX=/" >> "$GITHUB_ENV"
           else
             echo "PATHPREFIX=$REPO_NAME" >> "$GITHUB_ENV"
