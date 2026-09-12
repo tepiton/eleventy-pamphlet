@@ -1,5 +1,5 @@
 {
-  "name": "eleventy-base-literary",
+  "name": "eleventy-pamphlet",
   "version": "1.0.0",
   "description": "An Eleventy base for literary and chaptered sites",
   "type": "module",
@@ -10,7 +10,6 @@
     "debug": "DEBUG=* npx @11ty/eleventy"
   },
   "keywords": ["eleventy", "literary", "chapters", "books"],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
