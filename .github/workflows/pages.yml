@@ -36,6 +36,8 @@ jobs:
       - name: Compute path prefix
         shell: bash
         run: |
+          CUSTOM_DOMAIN="$(echo foo
+          )
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
           if [[ "$REPO_NAME" == *.github.io ]]; then
             echo "PATHPREFIX=$REPO_NAME/" >> "$GITHUB_ENV"
