@@ -1,17 +1,17 @@
 ---
-phase: 3
-phase_name: Schema Parity
-updated: 2026-03-30
-last_commit: 2205164
+phase: 4
+phase_name: Utilitarian Theme
+updated: 2026-09-27
+last_commit: ee9b5e5
 ---
 
 ## Current Focus
 
-All three templates (folio, pamphlet, chapbook) are now aligned on metadata schema, OG meta, and CSS vars. The template family is stable and `content/` is fully portable across all three.
+Added a selectable second stylesheet theme (utilitarian: plain Helvetica, wide page, styled tables) alongside the default literary theme. Switch lives in `content/_data/metadata.js`.
 
 ## Active Tasks
 
-- [ ] No active tasks — templates are in maintenance mode
+- [ ] No active tasks — theme switch is complete and committed
 
 ## Blockers
 
@@ -21,10 +21,10 @@ None.
 
 - pamphlet serves from orobia.lol, port 8086
 - `content/` is portable: copy to chapbook or folio unchanged
-- Chapter sort: `order` fallback 999 + secondary sort by filename
-- OG image is conditional — only rendered when `metadata.image` is set
-- Typekit kits `ztn6rcs` and `pgn7ley` baked into `base.njk`
+- `metadata.stylesheet` selects `/css/<value>.css`; unset/default loads `style.css` + Typekit; `"utilitarian"` skips Typekit
+- CI/infra fixes for GitHub Pages custom domains landed between Phase 3 and 4 (commits `3a1eaa3`..`c6bafa0`), not tracked as their own phase
+- Utilitarian theme not yet ported to folio/chapbook
 
 ## Next Session
 
-Review `docs/IMPLEMENTATION.md` for planned future work, or read `docs/chronicles/` for history. Start any new feature work by creating a Phase 4 section in IMPLEMENTATION.md.
+No active work queued. If adopting the utilitarian theme family-wide, port `css/utilitarian.css` and the `base.njk` switch to folio and chapbook. Otherwise check `docs/IMPLEMENTATION.md` Phase 5 ideas (RSS/Atom feed, sitemap).
