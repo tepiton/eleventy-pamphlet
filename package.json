@@ -9,11 +9,19 @@
     "clean": "rm -rf _site",
     "debug": "DEBUG=* npx @11ty/eleventy"
   },
-  "keywords": ["eleventy", "literary", "chapters", "books"],
+  "keywords": [
+    "eleventy",
+    "literary",
+    "chapters",
+    "books"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "markdown-it": "^14.0.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
