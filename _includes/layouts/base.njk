@@ -12,9 +12,11 @@
   <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
   {% if metadata.image %}<meta property="og:image" content="{{ metadata.image }}">{% endif %}
   
+  {% if metadata.stylesheet != "utilitarian" %}
   <link rel="stylesheet" href="https://use.typekit.net/ztn6rcs.css">
   <link rel="stylesheet" href="https://use.typekit.net/pgn7ley.css">
-  <link rel="stylesheet" href="/css/style.css">
+  {% endif %}
+  <link rel="stylesheet" href="/css/{{ metadata.stylesheet or 'style' }}.css">
   
   <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 </head>

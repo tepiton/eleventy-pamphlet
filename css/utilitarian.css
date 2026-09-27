@@ -1,6 +1,12 @@
+/* Utilitarian theme: Helvetica stack, wide page with a narrow prose
+   measure, styled tables. Select by setting "stylesheet": "utilitarian"
+   in content/_data/metadata.js (this also skips the Typekit webfont
+   load, which only the default literary stylesheet uses).
+   Derived from xhosi.dev. */
+
 :root {
-  --font-body: p22-stickley-pro-text, neue-kabel, Palatino, Georgia, serif;
-  --font-heading: neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif;
+  --font-body: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-body);
 
   /* Light theme (default) */
   --color-bg: #fffff8;
@@ -57,18 +63,18 @@ body.dark-mode {
 }
 
 html {
-  font-size: clamp(1rem, .8rem + 1vw, 1.25rem);
+  font-size: clamp(.9375rem, .85rem + .4vw, 1.0625rem);
 }
 
 body {
-  --measure: min(90%, 48ch);
+  --measure: 56rem;
+  --prose: 42rem;
   background-color: var(--color-bg);
   color: var(--color-text);
   counter-reset: sidenote-counter;
   font-family: var(--font-body);
   margin: 0;
-  width: 100vw;
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin-inline: auto;
   max-inline-size: var(--measure);
   margin-bottom: 3em;
@@ -88,20 +94,24 @@ p {
   line-height: 1.6em;
 }
 
+/* Keep running text at a readable measure; tables use the full width */
+p, ul, ol, blockquote, h1, h2, h3, h4 {
+  max-inline-size: var(--prose);
+}
+
 h1, h2 {
   font-family: var(--font-heading);
   font-weight: 600;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.25em;
   padding-top: 1em;
   letter-spacing: -1.5px;
 }
 
 h2 {
   margin-bottom: .25em;
-  text-align: center;
   margin-top: 2em;
 }
 
@@ -120,7 +130,7 @@ h4 {
   font-weight: 600;
   margin-bottom: 0;
   margin-top: 3em;
-  text-align: center;
+  text-align: left;
   letter-spacing: -.04em;
 }
 

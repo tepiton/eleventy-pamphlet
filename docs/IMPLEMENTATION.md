@@ -8,6 +8,7 @@
 | 1 | Cleanup & Portability | ✅ Complete | 2026-02-25–28 |
 | 2 | Alignment | ✅ Complete | 2026-03-01–03 |
 | 3 | Schema Parity | ✅ Complete | 2026-03-30 |
+| 4 | Utilitarian Theme | ✅ Complete | 2026-09-27 |
 
 ---
 
@@ -55,6 +56,22 @@ See: chronicles/phase-2-alignment.md
 
 See: chronicles/phase-3-parity.md
 
+CI/infra fixes also landed post-Phase-3 (untracked as a phase): GitHub Pages
+custom-domain path-prefix logic in `pages.yml`, Node.js version bump, and
+`package.json` repo-name correction. See commits `3a1eaa3`..`c6bafa0`.
+
+### Phase 4: Utilitarian Theme (2026-09-27)
+
+- Added `css/utilitarian.css` — plain Helvetica alternative stylesheet, wider
+  measure, styled tables; derived from xhosi.dev
+- `base.njk` switches stylesheet and skips Typekit load based on
+  `metadata.stylesheet`
+- Added matching table styles to `css/style.css` for schema parity between
+  themes
+- Documented the switch in README
+
+See: chronicles/phase-4-utilitarian-theme.md
+
 ---
 
 ## Current State
@@ -66,17 +83,19 @@ The template family is stable. All three templates (folio, pamphlet, chapbook) s
 - Identical chapter sort behavior
 - Identical OG meta conditional rendering
 
-No active feature work. Future changes should track as Phase 4.
+Pamphlet now additionally supports a `metadata.stylesheet` switch for an
+alternate utilitarian theme (not yet ported to folio/chapbook).
 
 ---
 
 ## Future Phases
 
-### Phase 4: (Unplanned)
+### Phase 5: (Unplanned)
 
 Ideas if needed:
 
 - RSS/Atom feed for chapters
 - sitemap generation (currently absent — folio has it, pamphlet does not)
+- Port utilitarian theme switch to folio/chapbook if adopted there
 - Additional CSS literary features
 - Pagination for long chapter lists

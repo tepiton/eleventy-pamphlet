@@ -96,6 +96,23 @@ a {
 
 **Other web fonts:** Add a `<link>` to your font provider in `_includes/layouts/base.njk` and update the `--font-body` and `--font-heading` variables in `style.css`.
 
+### Stylesheet themes
+
+Two stylesheets ship in `css/`, on the same selector contract:
+
+| Stylesheet | Look |
+|:-----------|:-----|
+| `style.css` (default) | Literary: Stickley/Kabel webfonts, narrow 48ch column, centered headings |
+| `utilitarian.css` | Plain Helvetica stack, wide page with a narrow prose measure, left-aligned, styled tables |
+
+Switch by setting one key in `content/_data/metadata.js` (a content edit — no layout changes):
+
+```js
+stylesheet: "utilitarian",
+```
+
+The Typekit webfont load is tied to the switch: the default stylesheet loads it, `utilitarian` skips it. Any other value loads `/css/<value>.css`, so a site can ship its own stylesheet file and select it the same way.
+
 ### Typography classes
 
 - `.drop` — drop cap on first letter, small caps on first line

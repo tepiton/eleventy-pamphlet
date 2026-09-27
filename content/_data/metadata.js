@@ -8,4 +8,7 @@ export default {
     name: "Your Name",
   },
   image: "",
+  // Uncomment for the utilitarian theme (plain Helvetica, wide page,
+  // no Typekit webfonts): see css/utilitarian.css
+  // stylesheet: "utilitarian",
 }
