@@ -9,6 +9,7 @@
 | 2 | Alignment | ✅ Complete | 2026-03-01–03 |
 | 3 | Schema Parity | ✅ Complete | 2026-03-30 |
 | 4 | Utilitarian Theme | ✅ Complete | 2026-09-27 |
+| 5 | Maintenance | ✅ Complete | 2026-10-03 |
 
 ---
 
@@ -72,6 +73,14 @@ custom-domain path-prefix logic in `pages.yml`, Node.js version bump, and
 
 See: chronicles/phase-4-utilitarian-theme.md
 
+### Phase 5: Maintenance (2026-10-03)
+
+- npm 12 install hygiene: `.npmrc` with `fund=false` + `audit=false`
+  (DEC-009); `allowScripts` verified correct (fsevents only, no sharp
+  in this tree)
+
+See: chronicles/phase-5-maintenance.md
+
 ---
 
 ## Current State
@@ -90,7 +99,7 @@ alternate utilitarian theme (not yet ported to folio/chapbook).
 
 ## Future Phases
 
-### Phase 5: (Unplanned)
+### Phase 6: (Unplanned)
 
 Ideas if needed:
 
