@@ -1,17 +1,20 @@
 ---
-phase: 4
-phase_name: Utilitarian Theme
-updated: 2026-09-27
-last_commit: ee9b5e5
+phase: 5
+phase_name: Maintenance
+updated: 2026-10-03
+last_commit: 0df4ebe
 ---
 
 ## Current Focus
 
-Added a selectable second stylesheet theme (utilitarian: plain Helvetica, wide page, styled tables) alongside the default literary theme. Switch lives in `content/_data/metadata.js`.
+npm 12 install-hygiene pass complete (Phase 5): fresh installs are
+silent. Template is in maintenance mode; utilitarian theme (Phase 4)
+remains pamphlet-only.
 
 ## Active Tasks
 
-- [ ] No active tasks — theme switch is complete and committed
+- [ ] None — drop `audit=false` from `.npmrc` when eleventy 4 ships
+      (DEC-009).
 
 ## Blockers
 
@@ -21,10 +24,16 @@ None.
 
 - pamphlet serves from orobia.lol, port 8086
 - `content/` is portable: copy to chapbook or folio unchanged
-- `metadata.stylesheet` selects `/css/<value>.css`; unset/default loads `style.css` + Typekit; `"utilitarian"` skips Typekit
-- CI/infra fixes for GitHub Pages custom domains landed between Phase 3 and 4 (commits `3a1eaa3`..`c6bafa0`), not tracked as their own phase
-- Utilitarian theme not yet ported to folio/chapbook
+- `metadata.stylesheet` selects `/css/<value>.css`; unset/default loads
+  `style.css` + Typekit; `"utilitarian"` skips Typekit (Phase 4)
+- npm 12: `allowScripts` pins `fsevents@2.3.3` only — no sharp in this
+  tree
+- Remaining audit findings are braces→chokidar, dev-server-only and
+  unfixable on eleventy 3; hidden from install output only (DEC-009)
+- Chapter sort: `order` fallback 999; OG image conditional on
+  `metadata.image`
 
 ## Next Session
 
-No active work queued. If adopting the utilitarian theme family-wide, port `css/utilitarian.css` and the `base.njk` switch to folio and chapbook. Otherwise check `docs/IMPLEMENTATION.md` Phase 5 ideas (RSS/Atom feed, sitemap).
+Nothing queued. Phase 6 ideas in `docs/IMPLEMENTATION.md` (RSS,
+sitemap, utilitarian-theme port to folio/chapbook).
