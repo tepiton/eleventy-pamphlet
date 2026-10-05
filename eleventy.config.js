@@ -4,7 +4,18 @@ import markdownIt from "markdown-it";
 import metadata from "./content/_data/metadata.js";
 
 export default function(eleventyConfig) {
-  
+
+  // Drafts preprocessor
+  eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
+    if (data.draft) {
+      data.title = `${data.title} (draft)`
+    }
+
+    if(data.draft && process.env.ELEVENTY_RUN_MODE === "build") {
+      return false
+    }
+  })
+
   eleventyConfig.addPassthroughCopy("content/img");
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
