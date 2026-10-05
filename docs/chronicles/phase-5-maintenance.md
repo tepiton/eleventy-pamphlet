@@ -18,3 +18,23 @@ eleventy template to quiet installs; pamphlet needed the least.
 **Decisions**: DEC-009.
 
 **Files**: commit 213d31b
+
+## Entry 2: drafts preprocessor, aligning with the content contract (2026-10-04)
+
+**What**: `draft: true` files are excluded from production builds,
+matching chapbook and the blogs.
+
+**Why**: The shared content contract (tepiton/content-fixture; mimeo's
+TEMPLATE_CONSOLIDATION pass 2) states drafts are excluded from
+production builds everywhere; pamphlet was the one template without
+the preprocessor.
+
+**How**: `addPreprocessor` copied from chapbook (title gains
+"(draft)" in serve mode, exclusion in build mode). `_site/` verified
+byte-identical on pamphlet's draftless demo before and after;
+production sites (pesach.lol, amalgamedon.com) carry no `draft:`
+files (code search, 2026-10-04).
+
+**Decisions**: DEC-010.
+
+**Files**: this commit.

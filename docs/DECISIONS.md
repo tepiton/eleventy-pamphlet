@@ -157,3 +157,29 @@ Drop `audit=false` when eleventy 4 (chokidar 5) lands.
 forcing chokidar 4/5 via overrides (breaks glob-based watching on
 eleventy 3); leaving the report visible (alarms consumers who cannot
 act on it).
+
+---
+
+### DEC-010: Drafts excluded from production builds (2026-10-04)
+
+**Status**: Active
+
+**Context**: The shared content contract (tepiton/content-fixture)
+states `draft: true` is excluded from production builds across the
+four document templates. pamphlet was the only one without the drafts
+preprocessor — a draft chapter would have published. chapbook and the
+blogs exclude drafts via an identical `addPreprocessor`; the trio
+already shares this machinery elsewhere.
+
+**Decision**: Add the preprocessor chapbook carries: `draft: true`
+files get "(draft)" appended to the title in serve mode and are
+excluded from build-mode output. Build output verified byte-identical
+on the demo (which carries no drafts); production sites have no
+`draft:` files (code search, 2026-10-04).
+
+**Alternatives**: none — the contract's draft row requires it; without
+the preprocessor the fixture corpus's draft chapter publishes from
+pamphlet.
+
+**Consequences**: Behavior changes only for content that sets
+`draft: true` — previously published, now excluded.
