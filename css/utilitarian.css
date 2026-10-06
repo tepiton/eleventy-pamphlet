@@ -14,6 +14,7 @@
   --color-muted: #666;
   --color-link: #555;
   --color-link-hover: #222;
+  --color-accent: #0b57a4;
   --color-border: #ccc;
   --color-table-head: #e8edf2;
   --color-table-stripe: #f3f6f9;
@@ -28,6 +29,7 @@
     --color-muted: #888;
     --color-link: #aaa;
     --color-link-hover: #ccc;
+    --color-accent: #7fb4f0;
     --color-border: #333;
     --color-table-head: #2a3039;
     --color-table-stripe: #21252c;
@@ -43,6 +45,7 @@ body.light-mode {
   --color-muted: #666;
   --color-link: #555;
   --color-link-hover: #222;
+  --color-accent: #0b57a4;
   --color-border: #ccc;
   --color-table-head: #e8edf2;
   --color-table-stripe: #f3f6f9;
@@ -56,6 +59,7 @@ body.dark-mode {
   --color-muted: #888;
   --color-link: #aaa;
   --color-link-hover: #ccc;
+  --color-accent: #7fb4f0;
   --color-border: #333;
   --color-table-head: #2a3039;
   --color-table-stripe: #21252c;
@@ -116,11 +120,13 @@ h2 {
 }
 
 h3 {
-  font-style: italic;
-  font-size: inherit;
+  font-size: 1.25em;
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
   margin-bottom: 0;
+  margin-top: 2em;
 }
 
 h4 {
@@ -230,8 +236,8 @@ a:hover {
 
 /* Table of Contents */
 .toc {
-  list-style: none;
-  padding: 0;
+  list-style: disc;
+  padding-left: 1.25em;
   margin: 2rem 0;
 }
 
@@ -241,6 +247,29 @@ a:hover {
 
 .toc a {
   font-size: 1.1rem;
+}
+
+/* In-page table of contents */
+.page-toc ul {
+  font-size: .875em;
+  margin-block-start: .5rem;
+}
+
+.page-toc h3 {
+  font-size: 1em;
+  margin-top: 1.5em;
+}
+
+.page-toc li {
+  margin-block-start: .2rem;
+}
+
+.page-toc a {
+  color: var(--color-accent);
+}
+
+.page-toc a:hover {
+  text-decoration: underline;
 }
 
 /* Chapter Header */
