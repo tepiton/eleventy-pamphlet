@@ -12,7 +12,7 @@
   <meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
   {% if metadata.image %}<meta property="og:image" content="{{ metadata.image }}">{% endif %}
   
-  {% if metadata.stylesheet != "utilitarian" %}
+  {% if metadata.stylesheet not in ["utilitarian", "spine", "log"] %}
   <link rel="stylesheet" href="https://use.typekit.net/ztn6rcs.css">
   <link rel="stylesheet" href="https://use.typekit.net/pgn7ley.css">
   {% endif %}

@@ -8,7 +8,12 @@ export default {
     name: "Your Name",
   },
   image: "",
-  // Uncomment for the utilitarian theme (plain Helvetica, wide page,
-  // no Typekit webfonts): see css/utilitarian.css
+  // Stylesheet in css/: "spine" or "log" (timeline looks for the index),
+  // "utilitarian" (plain Helvetica, wide page), or omit for the literary default.
+  // Spine and log are utilitarian plus an index-only section.
   // stylesheet: "utilitarian",
+  // Chapter order: omit to sort by `order` front matter, or "date" for a
+  // newest-first feed by each chapter's last git commit (CI needs full
+  // history: fetch-depth: 0 in the Pages workflow).
+  // sortBy: "date",
 }

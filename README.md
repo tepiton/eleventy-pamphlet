@@ -98,12 +98,13 @@ a {
 
 ### Stylesheet themes
 
-Two stylesheets ship in `css/`, on the same selector contract:
+Four stylesheets ship in `css/`, on the same selector contract:
 
 | Stylesheet | Look |
 |:-----------|:-----|
 | `style.css` (default) | Literary: Stickley/Kabel webfonts, narrow 48ch column, centered headings |
 | `utilitarian.css` | Plain Helvetica stack, wide page with a narrow prose measure, left-aligned, styled tables |
+| `spine.css`, `log.css` | Utilitarian plus a timeline look for the index (dates and descriptions) |
 
 Switch by setting one key in `content/_data/metadata.js` (a content edit — no layout changes):
 
@@ -111,7 +112,11 @@ Switch by setting one key in `content/_data/metadata.js` (a content edit — no 
 stylesheet: "utilitarian",
 ```
 
-The Typekit webfont load is tied to the switch: the default stylesheet loads it, `utilitarian` skips it. Any other value loads `/css/<value>.css`, so a site can ship its own stylesheet file and select it the same way.
+The Typekit webfont load is tied to the switch: the default stylesheet loads it, `utilitarian`, `spine` and `log` skip it. Any other value loads `/css/<value>.css`, so a site can ship its own stylesheet file and select it the same way.
+
+### Newest-first ordering
+
+Set `sortBy: "date"` in `metadata.js` to order chapters newest-first by each chapter's last git commit instead of by `order`. The Pages workflow already checks out full history (`fetch-depth: 0`), which this needs. A `date:` in a chapter's front matter overrides the git date.
 
 ### Typography classes
 

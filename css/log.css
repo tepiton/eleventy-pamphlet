@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
+/* Log theme (utilitarian base, JetBrains Mono): wide page with a narrow prose
+   measure, styled tables. Select by setting "stylesheet": "utilitarian"
+   in content/_data/metadata.js (this also skips the Typekit webfont
+   load, which only the default literary stylesheet uses).
+   Derived from xhosi.dev. */
+
 :root {
-  --font-body: p22-stickley-pro-text, neue-kabel, Palatino, Georgia, serif;
-  --font-heading: neue-kabel, 'Gill Sans', 'Helvetica Neue', sans-serif;
+  /* Log look: JetBrains Mono across the whole site, chapter pages included */
+  --font-body: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-heading: var(--font-body);
 
   /* Light theme (default) */
   --color-bg: #fffff8;
@@ -8,6 +16,7 @@
   --color-muted: #666;
   --color-link: #555;
   --color-link-hover: #222;
+  --color-accent: #0b57a4;
   --color-border: #ccc;
   --color-table-head: #e8edf2;
   --color-table-stripe: #f3f6f9;
@@ -22,6 +31,7 @@
     --color-muted: #888;
     --color-link: #aaa;
     --color-link-hover: #ccc;
+    --color-accent: #7fb4f0;
     --color-border: #333;
     --color-table-head: #2a3039;
     --color-table-stripe: #21252c;
@@ -37,6 +47,7 @@ body.light-mode {
   --color-muted: #666;
   --color-link: #555;
   --color-link-hover: #222;
+  --color-accent: #0b57a4;
   --color-border: #ccc;
   --color-table-head: #e8edf2;
   --color-table-stripe: #f3f6f9;
@@ -50,6 +61,7 @@ body.dark-mode {
   --color-muted: #888;
   --color-link: #aaa;
   --color-link-hover: #ccc;
+  --color-accent: #7fb4f0;
   --color-border: #333;
   --color-table-head: #2a3039;
   --color-table-stripe: #21252c;
@@ -57,18 +69,18 @@ body.dark-mode {
 }
 
 html {
-  font-size: clamp(1rem, .8rem + 1vw, 1.25rem);
+  font-size: clamp(.9375rem, .85rem + .4vw, 1.0625rem);
 }
 
 body {
-  --measure: min(90%, 48ch);
+  --measure: 56rem;
+  --prose: 42rem;
   background-color: var(--color-bg);
   color: var(--color-text);
   counter-reset: sidenote-counter;
   font-family: var(--font-body);
   margin: 0;
-  width: 100vw;
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin-inline: auto;
   max-inline-size: var(--measure);
   margin-bottom: 3em;
@@ -88,29 +100,35 @@ p {
   line-height: 1.6em;
 }
 
+/* Keep running text at a readable measure; tables use the full width */
+p, ul, ol, blockquote, h1, h2, h3, h4 {
+  max-inline-size: var(--prose);
+}
+
 h1, h2 {
   font-family: var(--font-heading);
   font-weight: 600;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.25em;
   padding-top: 1em;
   letter-spacing: -1.5px;
 }
 
 h2 {
   margin-bottom: .25em;
-  text-align: inherit;
   margin-top: 2em;
 }
 
 h3 {
-  font-style: italic;
-  font-size: inherit;
+  font-size: 1.25em;
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
   margin-bottom: 0;
+  margin-top: 2em;
 }
 
 h4 {
@@ -120,7 +138,7 @@ h4 {
   font-weight: 600;
   margin-bottom: 0;
   margin-top: 3em;
-  text-align: inherit;
+  text-align: left;
   letter-spacing: -.04em;
 }
 
@@ -220,31 +238,40 @@ a:hover {
 
 /* Table of Contents */
 .toc {
-  list-style: none;
-  padding: 0;
+  list-style: disc;
+  padding-left: 1.25em;
   margin: 2rem 0;
 }
 
 .toc li {
-  margin: 1.5rem 0;
+  margin: .5rem 0;
 }
 
 .toc a {
   font-size: 1.1rem;
 }
 
-/* The index emits a date for the timeline stylesheets; the literary one omits it */
-.toc time {
-  display: none;
+/* In-page table of contents */
+.page-toc ul {
+  font-size: .875em;
+  margin-block-start: .5rem;
 }
 
-/* Description sits directly under its title, smaller and italic */
-.toc .dek {
-  margin: .1rem 0 0;
-  font-size: .85rem;
-  font-style: italic;
-  line-height: 1.4;
-  color: var(--color-muted);
+.page-toc h3 {
+  font-size: 1em;
+  margin-top: 1.5em;
+}
+
+.page-toc li {
+  margin-block-start: .2rem;
+}
+
+.page-toc a {
+  color: var(--color-accent);
+}
+
+.page-toc a:hover {
+  text-decoration: underline;
 }
 
 /* Chapter Header */
@@ -421,4 +448,54 @@ td a {
 
 h2[id] {
   scroll-margin-top: 1rem;
+}
+
+/* ==== Timeline look 3: Log (ISO date column, mono, short description) ====
+   Markup it styles: <li><time>2026-09-27</time><a>Title</a><p class="dek">...</p></li>
+   Degrades cleanly if time or dek are absent. Index only. */
+body:has(.toc) {
+  --measure: 48rem;
+  --mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+body:has(.toc) h2:has(+ .toc) {
+  font: 500 .75rem var(--mono); letter-spacing: .04em;
+  color: var(--color-muted); margin: 2.5rem 0 0;
+}
+body:has(.toc) h2:has(+ .toc)::before { content: "$ git log --date=short"; }
+body:has(.toc) h2:has(+ .toc) { font-size: 0; margin-top: 2.5rem; }
+body:has(.toc) h2:has(+ .toc)::before { font-size: .75rem; }
+.toc {
+  list-style: none; max-inline-size: none; margin: .75rem 0 3rem; padding: 0;
+  font-family: var(--mono); border-top: 1px solid var(--color-border);
+}
+.toc li {
+  margin: 0; padding: .8rem .5rem; position: relative;
+  display: grid; grid-template-columns: 6.75rem minmax(0, 1fr); column-gap: 1rem; row-gap: .25rem; align-items: baseline;
+  border-bottom: 1px solid var(--color-border);
+}
+.toc li:hover { background: var(--color-table-stripe); }
+.toc time {
+  grid-column: 1; grid-row: 1; margin: 0;
+  font: 400 .8rem/1.6 var(--mono); font-variant-numeric: tabular-nums;
+  letter-spacing: .02em; color: var(--color-muted); white-space: nowrap;
+}
+.toc li:hover time { color: var(--color-accent); }
+.toc a {
+  grid-column: 2; grid-row: 1; margin: 0;
+  font: 700 .95rem/1.5 var(--mono); color: var(--color-text);
+}
+.toc a:hover { color: var(--color-accent); }
+.toc li:first-child a::after {
+  content: "HEAD"; margin-left: .75em; padding: .1em .5em; vertical-align: .08em;
+  font: 500 .62rem var(--mono); letter-spacing: .08em;
+  background: var(--color-accent); color: var(--color-bg); border-radius: 2px;
+}
+.toc .dek {
+  grid-column: 2; grid-row: 2; margin: 0; max-inline-size: none;
+  font: 400 .78rem/1.55 var(--mono); color: var(--color-muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+@media (max-width: 36rem) {
+  .toc li { grid-template-columns: 1fr; }
+  .toc time, .toc a, .toc .dek { grid-column: 1; grid-row: auto; }
 }
