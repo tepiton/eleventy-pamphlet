@@ -38,3 +38,23 @@ files (code search, 2026-10-04).
 **Decisions**: DEC-010.
 
 **Files**: this commit.
+
+## Entry 3: xhosi.com changes carried into the template (2026-10-08)
+
+**What**: Ported xhosi.com's improvements into pamphlet: GitHub-style
+heading ids, a description-marks preprocessor, markdown-it
+`breaks: true`, `spine` and `log` timeline stylesheets, and an opt-in
+`metadata.sortBy = "date"` (newest-first by last git commit). Follow-up
+CSS tweak to blockquote margins (30c01f5).
+
+**Why**: xhosi.com is built on pamphlet; fixes made there belong in
+the template. The sort change is opt-in so the contract's `order`
+sort stays the default.
+
+**How**: Commit 2e141b8 pushed to main by a separate session before
+approval; Philip then chose to keep it on main. The Pages workflow
+gained a full-history checkout for the git-date sort.
+
+**Decisions**: DEC-011.
+
+**Files**: 2e141b8, 30c01f5.

@@ -1,16 +1,16 @@
 ---
 phase: 5
 phase_name: Maintenance
-updated: 2026-10-04
-last_commit: fc222b6
+updated: 2026-10-08
+last_commit: 30c01f5
 ---
 
 ## Current Focus
 
-npm 12 install-hygiene pass complete (Phase 5); drafts preprocessor
-added 2026-10-04 (Entry 2) aligning pamphlet with the shared content
-contract. Template is in maintenance mode; utilitarian theme (Phase 4)
-remains pamphlet-only.
+Phase 5 maintenance: npm 12 hygiene, drafts preprocessor (Entry 2),
+and on 2026-10-08 the xhosi.com changes carried into the template
+(Entry 3, DEC-011; commit 2e141b8 kept on main). Utilitarian theme
+(Phase 4) remains pamphlet-only.
 
 ## Active Tasks
 
@@ -34,6 +34,10 @@ None.
   tree
 - Remaining audit findings are braces→chokidar, dev-server-only and
   unfixable on eleventy 3; hidden from install output only (DEC-009)
+- `metadata.sortBy = "date"` opts into a newest-first feed by last git
+  commit (needs `fetch-depth: 0` in CI); default sort unchanged
+  (DEC-011). `stylesheet` also accepts `"spine"` / `"log"`
+- markdown-it `breaks: true`; headings get GitHub-style ids
 - Chapter sort: `order` fallback 999; OG image conditional on
   `metadata.image`
 
