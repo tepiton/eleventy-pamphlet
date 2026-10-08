@@ -183,3 +183,27 @@ pamphlet.
 
 **Consequences**: Behavior changes only for content that sets
 `draft: true` — previously published, now excluded.
+
+---
+
+### DEC-011: Opt-in git-date sort and xhosi.com ports (2026-10-08)
+
+**Status**: Active
+
+**Context**: xhosi.com (built on pamphlet) wants pages newest
+last-commit first, like a reverse-chronological feed. The content
+contract specifies `order` for literary templates, so changing the
+default would break portability.
+
+**Decision**: Add `metadata.sortBy = "date"` as an opt-in; unset keeps
+the `order` sort. Chapters take `date: "git Last Modified"` unless
+their front matter sets `date`. Also carried over from xhosi.com:
+`breaks: true`, heading ids, description-mark stripping, and the
+`spine`/`log` stylesheets. Commit 2e141b8 stays on main (Philip,
+2026-10-08).
+
+**Alternatives**: Make date sort the default (breaks the contract);
+keep it as an xhosi-only exception (drift from the template).
+
+**Consequences**: Sites using `sortBy: "date"` need `fetch-depth: 0`
+in CI. `breaks: true` changes line-break rendering for all content.

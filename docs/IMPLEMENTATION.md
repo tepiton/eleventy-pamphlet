@@ -78,6 +78,10 @@ See: chronicles/phase-4-utilitarian-theme.md
 - npm 12 install hygiene: `.npmrc` with `fund=false` + `audit=false`
   (DEC-009); `allowScripts` verified correct (fsevents only, no sharp
   in this tree)
+- Drafts preprocessor (DEC-010)
+- xhosi.com changes ported (2026-10-08, DEC-011): heading ids,
+  description-mark preprocessor, `breaks: true`, spine/log themes,
+  opt-in `sortBy: "date"`
 
 See: chronicles/phase-5-maintenance.md
 
