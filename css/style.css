@@ -154,11 +154,11 @@ h4::before, h4::after {
 
 blockquote {
   font-style: italic;
-  margin-block-start: .25em;
+  margin-block-start: 2em;
   margin-block-end: 1em;
   margin-inline-start: 1em;
   margin-inline-end: 1em;
-  padding-inline-start: 1em;
+  padding-inline-start: .5em;
   border-left: 1px solid var(--color-muted);
 }
 
