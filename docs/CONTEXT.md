@@ -1,15 +1,16 @@
 ---
 phase: 5
 phase_name: Maintenance
-updated: 2026-10-08
-last_commit: 30c01f5
+updated: 2026-10-09
+last_commit: 29fc73e
 ---
 
 ## Current Focus
 
 Phase 5 maintenance: npm 12 hygiene, drafts preprocessor (Entry 2),
-and on 2026-10-08 the xhosi.com changes carried into the template
-(Entry 3, DEC-011; commit 2e141b8 kept on main). Utilitarian theme
+xhosi.com changes (Entry 3, DEC-011; 2e141b8 kept on main), and on
+2026-10-09 the folio references purged from living docs (Entry 4),
+completing the 2026-10-04 folio retirement. Utilitarian theme
 (Phase 4) remains pamphlet-only.
 
 ## Active Tasks
@@ -24,8 +25,8 @@ None.
 ## Context
 
 - pamphlet serves from orobia.lol, port 8086
-- `content/` is portable: copy to chapbook unchanged (folio retired
-  2026-10-04)
+- `content/` is portable: copy to chapbook unchanged; folio retired
+  2026-10-04 and purged from README/CLAUDE.md 2026-10-09 (Entry 4)
 - `draft: true` excluded from production builds (DEC-010); serve mode
   appends "(draft)" to the title
 - `metadata.stylesheet` selects `/css/<value>.css`; unset/default loads

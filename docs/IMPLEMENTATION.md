@@ -9,7 +9,7 @@
 | 2 | Alignment | ✅ Complete | 2026-03-01–03 |
 | 3 | Schema Parity | ✅ Complete | 2026-03-30 |
 | 4 | Utilitarian Theme | ✅ Complete | 2026-09-27 |
-| 5 | Maintenance | ✅ Complete | 2026-10-03 |
+| 5 | Maintenance | ✅ Complete | 2026-10-03–09 |
 
 ---
 
@@ -82,6 +82,9 @@ See: chronicles/phase-4-utilitarian-theme.md
 - xhosi.com changes ported (2026-10-08, DEC-011): heading ids,
   description-mark preprocessor, `breaks: true`, spine/log themes,
   opt-in `sortBy: "date"`
+- Folio-reference cleanup (2026-10-09): purged retired eleventy-folio
+  from README.md and CLAUDE.md (four-template family, tepiton/ paths),
+  completing the 2026-10-04 retirement
 
 See: chronicles/phase-5-maintenance.md
 

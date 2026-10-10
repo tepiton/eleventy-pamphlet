@@ -5,9 +5,8 @@ An Eleventy v3 starter for short literary works: novellas, single-volume fiction
 Part of a family of interoperable templates:
 - **eleventy-pamphlet** (this) - minimal, single layout
 - **eleventy-chapbook** - separate layouts, feature-rich
-- **eleventy-folio** - polished, with extras
 
-The `content/` directory is portable across all three. Swap templates to change the presentation without touching your content.
+The `content/` directory is portable across the document templates (chapbook, pamphlet, prose-blog, tech-blog) under the [content contract](https://github.com/tepiton/content-fixture/blob/main/CONTENT-CONTRACT.md). Swap templates to change the presentation without touching your content.
 
 ## Quick start
 
@@ -149,7 +148,7 @@ _includes/
     chapter.njk          # Chapter wrapper with prev/next
 ```
 
-The `content/` directory is designed to be portable. Copy it to eleventy-chapbook or eleventy-folio to get a different presentation with the same content.
+The `content/` directory is designed to be portable. Copy it to any of the other document templates to get a different presentation with the same content.
 
 ## npm scripts
 

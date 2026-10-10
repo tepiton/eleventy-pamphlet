@@ -58,3 +58,23 @@ gained a full-history checkout for the git-date sort.
 **Decisions**: DEC-011.
 
 **Files**: 2e141b8, 30c01f5.
+
+## Entry 4: folio references purged from living docs (2026-10-09)
+
+**What**: README.md and CLAUDE.md no longer reference eleventy-folio.
+
+**Why**: folio was retired 2026-10-04 (dek ported to chapbook, repo
+archived) per the consolidation recorded in tepiton/TEMPLATES docs;
+living docs should name only the four document templates.
+
+**How**: README's family list now names chapbook, pamphlet,
+prose-blog, tech-blog with a content-contract link, and the closing
+line says "Copy it to any of the other document templates". CLAUDE.md
+drops folio from the port list and file-locations table, deletes the
+obsolete folio git-remote note, rewords "all three" claims, adds a
+retirement note, and corrects stale mimeo-sites paths to tepiton/
+(TEMPLATES, amalgamedon.com). No code changed.
+
+**Decisions**: none new — completes the 2026-10-04 retirement.
+
+**Files**: this commit.
